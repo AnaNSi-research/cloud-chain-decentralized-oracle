@@ -1,0 +1,49 @@
+<form action="@upload" method="post" enctype="multipart/form-data">
+	<div id="upload" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header bg-light">
+					<h5 class="modal-title">Upload a file</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body container">
+					<input class="form-control" type="file" id="upload-file" name="file">
+					<div class="row mt-3 upload-unhide">
+						<div class="col-2">
+							<label class="form-label" for="upload-file-size">Filesize:</label>
+						</div>
+						<div class="col-10">
+							<input class="form-control" type="text" disabled id="upload-file-size" placeholder="0B" />
+						</div>
+					</div>
+					<div class="row mt-3 upload-unhide">
+						<div class="col-2  my-auto">
+							<label class="form-label" for="upload-file-saveas">Save as:</label>
+						</div>
+						<div class="col-10">
+							<input class="form-control" type="text" name="saveas" id="upload-file-saveas" required pattern='^[\w,\s-]+\.[A-Za-z]{3}$'/>
+						</div>
+					</div>	
+					<div class="row mt-3 upload-unhide">
+						<div class="col-2">
+							<label class="form-label" for="upload-file-key">Encryption key:</label>
+						</div>
+						<div class="col-7">
+							<input class="form-control" type="password" id="upload-file-key" value=''/>
+						</div>
+						<div class="col-2">
+							<button id="encrypt-btn" class="btn btn-outline-primary">Encrypt</button>
+						</div>
+						<div>
+							<h6 class="text-truncate" id="encrypt-msg"></h6>
+						</div>
+					</div>	
+				</div>
+				<div class="modal-footer bg-light">
+					<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+					<button id="upload-btn" type="submit" class="btn btn-primary">Upload</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

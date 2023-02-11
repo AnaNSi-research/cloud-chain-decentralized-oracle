@@ -1,0 +1,92 @@
+{{> navbar path=path}}
+<div style="padding-bottom: 56px;"> </div>
+{{#unless notloggedin}}
+	{{> toolbar}}
+{{/unless}}	
+<div style="padding-top: auto; padding-bottom: 56px;">
+	<main class="container my-4">
+		<div class="row justify-content-right">
+			<div>
+				{{#each errors as |error|}}
+					<div class="alert alert-danger" role="alert">
+						{{error}}
+					</div>
+				{{/each}}
+				{{#each successes as |success|}}
+					<div class="alert alert-success" role="alert">
+						{{success}}
+					</div>
+				{{/each}}
+				<div class = "alertMessage">
+				    <span class="alert alert-success containerMargins" id="successDiv" style="display:none"></span>
+				    <span class="alert alert-danger containerMargins" id="errorDiv" style="display:none"></span>
+				    <span class="alert alert-warning containerMargins" id="warnDiv" style="display:none"></span>
+				</div> 
+				{{#if files}}
+				<ul class="list-group">
+					<li class="list-group-item">
+						<label class="stretched-invisible-label">
+							<div class="form-check">
+								<div></div>
+								<div class="form-check-label row">
+								<div class="fw-bold col-md-2">Name</div>
+								<div class="fw-bold col-md-2">Size</div>
+								<div class="fw-bold col-md-2">Date added</div>
+								<div class="fw-bold col-md-6">Digest</div>
+							</div>
+						</label>
+					</li>
+				{{#each files}}
+					<li class="list-group-item">
+						<label for="check{{@index}}" class="stretched-invisible-label">
+							<div class="form-check">
+								{{#unless isdirectory}}
+									<input type="checkbox" class="form-check-input multi-select" data-select="{{name}}" data-select-size="{{size}}" data-select-type="{{#if isdirectory}}directory{{else}}file{{/if}}" id="check{{@index}}">
+								{{/unless}}
+								<div class="form-check-label row">
+									{{#if isdirectory}}
+										<a href="{{name}}" class="name col-md-2 listitem">{{name}}/</a>
+										<div class="col-md-2">-</div>
+										<div class="col-md-2">-</div>
+										<div class="col-md-6">-</div>
+									{{else}}
+									{{#if error}}
+										<a class="name col-md-3 listitem" title="{{error}}">{{name}}/</a>
+										<span class="badge rounded-pill bg-danger badge-alignment col-md-9">err</span>
+									{{else}}
+										<a href="" class="filename name col-md-2 listitem">{{name}}</a>
+										<div class="col-md-2">{{filesize size}}</div>
+										<div class="col-md-2">{{dateadded}}</div>
+										<div class="col-md-6" style="word-wrap: break-word">{{digest}}</div>
+									{{/if}}
+									{{/if}}
+								</div>
+							</div>
+						</label>
+					</li>
+				{{/each}}
+				{{else}}
+					{{#if notloggedin}}
+						<h2>Welcome to CloudChain!</h2>
+						<p>Please login to manage your files.</p>
+					{{else}}
+						<li class="list-group-item">
+							No files
+						</li>
+					{{/if}}
+				{{/if}}	
+				</ul>
+			</div>
+			<div style="padding-top: 56px;">
+				<span>Missing file? </span>
+				<button id="lostFile" data-bs-toggle="modal" data-bs-target="#check">Blockchain check</a>
+			</div>
+		</div>
+	</main>
+</div>
+
+{{> dialogue-upload}}
+{{> dialogue-mkdir}}
+{{> dialogue-download}}
+{{> dialogue-delete}}
+{{> dialogue-check}}

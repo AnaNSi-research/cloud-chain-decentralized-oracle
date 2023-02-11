@@ -1,0 +1,14 @@
+=============== Apr 10, 2022 (CEST) ===============
+11:40:17.015052 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:40:17.024769 db@open opening
+11:40:17.052895 version@stat F·[] S·0B[] Sc·[]
+11:40:17.056035 db@janitor F·2 G·0
+11:40:17.056059 db@open done T·31.264284ms
+=============== Apr 14, 2022 (CEST) ===============
+12:15:00.086781 memdb@flush N·24696 S·3MiB
+12:15:00.438171 memdb@flush created L0@3 N·24696 S·2MiB "b\x00\x17..\x90\x06\xbf,v15805":"r\xff\xdc..\xa3\xd4;,v2742"
+12:15:00.438304 version@stat F·[1] S·2MiB[2MiB] Sc·[0.25]
+12:15:00.466787 memdb@flush committed F·1 T·288.415932ms
+12:15:00.466915 journal@remove removed @1
+13:09:23.775618 db@close closing
+13:09:23.775750 db@close done T·130.849µs
